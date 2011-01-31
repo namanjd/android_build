@@ -532,7 +532,6 @@ function print_lunch_menu()
     local uname=$(uname)
     echo
     echo "You're building on" $uname
-    echo
     echo "Lunch menu... pick a combo:"
 
     local i=1
@@ -550,7 +549,6 @@ function brunch()
 {
     CWD=$(pwd)
     croot
-
     breakfast $*
     if [ $? -eq 0 ]; then
         mka bacon
@@ -586,10 +584,9 @@ function breakfast()
             lunch $target
         else
             # This is probably just the PA model name
-            if [ -z "$variant" ]; then
-                variant="userdebug"
-            fi
-            lunch pa_$target-$variant
+
+            lunch pa_$target-userdebug
+
         fi
     fi
     return $?
